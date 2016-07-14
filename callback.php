@@ -1,8 +1,11 @@
 <?php
+
 require_once 'vendor/autoload.php';
 
 use Nahid\StackApis\StackApi;
 
-$api = new StackApi;
+$api = new StackApi();
 
- var_dump($api->me()->info());
+echo '<pre>';
+ print_r($api->users()->moderators()->get());
+ echo '</pre>';

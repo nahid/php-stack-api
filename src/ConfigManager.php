@@ -6,12 +6,11 @@ use Illuminate\Config\Repository;
 
 class ConfigManager
 {
-	public $config;
+    public $config;
 
-	function __construct()
-	{
-		$data = include(__DIR__ . '/../config/stackapi.php');
-		$this->config = new Repository($data);
-	}
-
+    public function __construct()
+    {
+        $data = include __DIR__.'/../config/stackapi.php';
+        $this->config = new Repository($data);
+    }
 }
