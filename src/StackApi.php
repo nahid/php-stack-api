@@ -10,13 +10,13 @@ class StackApi
     protected $session;
     protected $code = '';
     protected $errors = null;
-    
+
     public $url = '';
     public $answers;
 
-    public function __construct()
+    public function __construct($config = null)
     {
-        $confManager = new ConfigManager();
+        $confManager = new ConfigManager($config);
         $this->session = new SessionInstance('php-stack-api');
         $this->config = $confManager->config;
         $this->code = isset($_GET['code']) ? $_GET['code'] : null;

@@ -8,9 +8,15 @@ class ConfigManager
 {
     public $config;
 
-    public function __construct()
+    public function __construct($config)
     {
-        $data = include __DIR__.'/../config/stackapi.php';
+    	$data = '';
+    	if(!is_null($config)) {
+    		$data = $config;
+    	}else {
+    		$data = include __DIR__.'/../config/stackapi.php';
+    	}
+       
         $this->config = new Repository($data);
     }
 }
