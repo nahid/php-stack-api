@@ -14,7 +14,7 @@ class StackApi
     public $url = '';
     public $answers;
 
-    public function __construct($config = null)
+    public function __construct(array $config)
     {
         $confManager = new ConfigManager($config);
         $this->session = new SessionInstance('php-stack-api');

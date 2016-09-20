@@ -11,7 +11,7 @@ class ConfigManager
     public function __construct($config)
     {
     	$data = '';
-    	if(!is_null($config)) {
+    	if(!is_null($config) && is_array($config)) {
     		$data = $config;
     	}else {
     		$data = include __DIR__.'/../config/stackapi.php';
