@@ -18,8 +18,11 @@
         "duncan3dc/sessions": "^1.0"
     },  
     "autoload": {
-    "psr-4": {
-      "Nahid\\StackApis\\": "src/"
-    }
+      "psr-4": {
+        "Nahid\\StackApis\\": "src/"
+      },
+      "files": [
+        "src/helpers/stackapis.php"
+      ]
   }
 }
