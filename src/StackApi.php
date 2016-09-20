@@ -32,9 +32,9 @@ class StackApi
         /*return call_user_func_array([$this, 'makeStackMethod'], array_merge([strtolower($method)], $params));*/
     }
 
-    public function makeAuthLink($caption = 'Authentication', $scope = '')
+    public function makeAuthUri($caption = 'Authentication', $scope = '')
     {
-        return '<a href="https://stackexchange.com/oauth?client_id='.$this->config->get('client_id').'&redirect_uri='.$this->config->get('redirect_uri').'&scope='.$scope.'">'.$caption.'</a>';
+        return 'https://stackexchange.com/oauth?client_id='.$this->config->get('client_id').'&redirect_uri='.$this->config->get('redirect_uri').'&scope='.$scope;
     }
 
     public function getAccessToken()
