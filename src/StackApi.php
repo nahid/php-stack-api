@@ -20,6 +20,7 @@ class StackApi
         $this->session = new SessionInstance('php-stack-api');
         $this->config = $confManager->config;
         $this->code = isset($_GET['code']) ? $_GET['code'] : null;
+        $this->url = 'https://api.stackexchange.com/2.2';
     }
 
     public function __call($method, $params)
@@ -99,9 +100,13 @@ class StackApi
         return $this;
     }
 
-    public function users()
+    public function users($ids)
     {
-        $this->url = 'https://api.stackexchange.com/2.2/users';
+        if(is_array($ids)) {
+            $ids = implode(',', $ids);
+        }
+
+        $this->url = 'https://api.stackexchange.com/2.2/users/' . $ids;
 
         return $this;
     }
@@ -158,13 +163,18 @@ class StackApi
 
     public function isExpired()
     {
-        /*echo 'Now: '. time();
-        echo '<br/>Expire: '. $this->session->get('expires'). '<br/>';*/
         if (time() > $this->session->get('expires')) {
             return true;
         }
 
         return false;
+    }
+
+    public function destroyAccessToken()
+    {
+        $this->session->set('accessToken', null);
+        $this->session->set('expires', time());
+        return true;
     }
 
     public static function fromCamelCase($str)
