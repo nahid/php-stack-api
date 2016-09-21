@@ -33,7 +33,7 @@ php artisan vendor: publish --provider="Nahid\StackApis\StackApiServiceProvider"
 ```
 When you run this command `stackapi.php` config file will be copy `config` directory of your project. Now open `app/stackapi.php` and file the credentials with your StackApps application.
 
-```
+```php
 return [
     'client_id' => 1234,
     'client_secret' => 'application-client-secret',
@@ -46,7 +46,7 @@ return [
 There are no special configuration for pure PHP project. You have to pass configuration data when the class is instantiated.
 
 
-```
+```php
 require 'vendor/autoload.php';
 
 use Nahid\StackApis\StackApi;
@@ -67,7 +67,7 @@ Its has a lots of functionalities. When all of these are configured, you just us
 At first you need to authenticate an user with your project. So make a authentication link.
 
 
-```
+```php
 <a href="<?= get_stack_api_auth_url(); ?>">Authenticate</a>
 ```
 
@@ -79,13 +79,13 @@ Its make a authentication url for StackExchange and get `access_token` with your
 
 #### For Laravel
 
-```
+```php
 $me = StackApi::me()->get();
 ```
 
 #### Pure PHP
 
-```
+```php
 $stackApi = new StackApi($config);
 $me = $stackApi->me()->get();
 ```
@@ -96,13 +96,13 @@ $me = $stackApi->me()->get();
 
 #### For Laravel
 
-```
+```php
 $me = StackApi::users(1234)->get();
 ```
 
 #### Pure PHP
 
-```
+```php
 $stackApi = new StackApi($config);
 $me = $stackApi->users(1234)->get();
 ```
@@ -116,13 +116,13 @@ This package is well formatted as like as RestAPI URI. Really you amazed to see 
 
 For example, you want to get data where URI is `/users/{ids}/comments` so the method will look like these
 
-```
+```php
 $data = StackApi::users($id)->comments()->get();
 ```
 
 Or, if the URI is `/users/{id}/network-activity` so the method will be 
 
-```
+```php
 $data = StackApi::users($id)->networkActivity()->get();
 ```
 
@@ -132,7 +132,7 @@ $data = StackApi::users($id)->networkActivity()->get();
 
 Here the final example, if you have a URI like `/badges/{ids}/recipients`
 
-```
+```php
 $data = StackApi::badges($id)->recipients()->get();
 ```
 
